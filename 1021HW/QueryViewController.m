@@ -30,6 +30,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+//- (NSMutableDictionary *) customerDictionary{
+//    if(!_customerDictionary)
+//        _customerDictionary = [[NSMutableDictionary alloc] init];
+//    
+//    return _customerDictionary;
+//    
+//}
+
 /*
 #pragma mark - Navigation
 
@@ -47,14 +56,22 @@
     
     
     
-//    NSString *idTextField = self.idTextField.text;
-//    NSArray *temp = [self.customerDictionary objectForKey:idTextField];
-//    
-//    if ([temp isEqual:idTextField]){
-//        
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Congratulations,Your Account Created" message:nil delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil,nil];
-//        [alert show];
-//    }
+    NSString *idTextField = self.idTextField.text;
+    self.currentCustomer= [self.customerDictionary objectForKey:idTextField];
+    // key給objectForKey會得到一個 object , 一個 Person's object，customerDictionary 先lazy init後，再指向他，之後再讓currentCustomer給指
+    
+    
+    
+    NSString *name = [NSString stringWithFormat:@"%@ %@",self.currentCustomer.firstName, self.currentCustomer.lastName];
+    
+    NSString *balance = [NSString stringWithFormat:@"Balance is %i", self.currentCustomer.balance];
+    
+    
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:name message:balance delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil,nil];
+    
+    [alert show];
+    
     
     
     

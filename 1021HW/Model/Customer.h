@@ -16,4 +16,8 @@
 -(void)showBalance;
 
 
+
+@property int balance ;
+// int balance default is 0 , not nil , 因為他不是個 pointer , pointer一開始就會指到 nil
+
 @end

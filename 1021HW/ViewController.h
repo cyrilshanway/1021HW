@@ -10,8 +10,6 @@
 
 @interface ViewController : UIViewController
 
-@property (strong, nonatomic) NSMutableDictionary *customerDictionary;
-
 
 @end
 

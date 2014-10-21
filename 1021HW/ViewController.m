@@ -10,7 +10,7 @@
 #import "Customer.h"
 #import "DepositViewController.h"
 #import "WithdrawViewController.h"
-//#import "QueryViewController.h"
+#import "QueryViewController.h"
 
 @interface ViewController ()
 
@@ -24,7 +24,7 @@
 
 
 @property (strong, nonatomic) NSMutableArray *customerArray;
-//@property (strong, nonatomic) NSMutableDictionary *customerDictionary;
+@property (strong, nonatomic) NSMutableDictionary *customerDictionary;
 
 
 @property Customer *currentCustomer ;
@@ -89,13 +89,10 @@
     //把person object(裡面有customer class , method)給currentCustomer,之後再把self.currentCustomer給BalanceViewController用，這樣BalanceViewController就可以用person 的 object (customer class , method)
     
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Congratulations,Your Account Created" message:nil delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil,nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Congratulations,Your Account Created"
+                                                    message:nil delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil,nil];
     [alert show];
     
-    //QueryViewController *cD;
-    
-    
-    //cD.customerDictionary=self.customerDictionary[self.IDTextFild.text];
     
 }
 
@@ -133,9 +130,9 @@
     if( [vc isKindOfClass:[DepositViewController class]]) {
     
         
-        DepositViewController* VC = segue.destinationViewController;
+        DepositViewController* DV = segue.destinationViewController;
         
-        VC.currentCustomer=self.currentCustomer;
+        DV.currentCustomer=self.currentCustomer;
         
     }
     
@@ -144,12 +141,30 @@
     
         
         
-        WithdrawViewController* VCC = segue.destinationViewController;
+        WithdrawViewController* WV = segue.destinationViewController;
         
-        VCC.currentCustomer=self.currentCustomer;
+        WV.currentCustomer=self.currentCustomer;
         
     
     }
+    
+    
+    else if( [vc isKindOfClass:[QueryViewController class]]) {
+        
+        
+        
+        
+        QueryViewController* QV = segue.destinationViewController;
+        
+        QV.currentCustomer=self.currentCustomer;
+        
+        QV.customerDictionary = self.customerDictionary;
+        
+        
+    }
+
+    
+    
     
     
 }
