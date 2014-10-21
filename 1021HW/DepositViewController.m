@@ -52,10 +52,12 @@
     
     [self.currentCustomer showBalance];
     
-    NSString *amountString = [NSString stringWithFormat:@"%@", self.depositAmountTextField.text];
+    NSString *amountString = [NSString stringWithFormat:@"Deposit : %@", self.depositAmountTextField.text];
+    NSString *balanceString = [NSString stringWithFormat:@"Your Balance Amount : %i", self.currentCustomer.balance];
     
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Congratulations,Your account deposit" message:amountString delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil,nil];
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:amountString message:balanceString delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil,nil];
     [alert show];
     
     

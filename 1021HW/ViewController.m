@@ -156,7 +156,8 @@
         
         QueryViewController* QV = segue.destinationViewController;
         
-        QV.currentCustomer=self.currentCustomer;
+       //QV.currentCustomer=self.currentCustomer;
+       //應該不需要做吧
         
         QV.customerDictionary = self.customerDictionary;
         

@@ -49,10 +49,11 @@
     
     [self.currentCustomer showBalance];
     
-    NSString *amountString = [NSString stringWithFormat:@"%@", self.withdrawAmountTextField.text];
+    NSString *amountString = [NSString stringWithFormat:@"Withdraw : %@", self.withdrawAmountTextField.text];
+    NSString *balanceString = [NSString stringWithFormat:@"Your Balance Amount : %i", self.currentCustomer.balance];
     
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Congratulations,Your account withdraw" message:amountString delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil,nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:amountString message:balanceString delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil,nil];
     [alert show];
     
     

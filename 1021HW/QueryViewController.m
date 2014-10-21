@@ -38,6 +38,7 @@
 //    return _customerDictionary;
 //    
 //}
+//有需要做嗎 ？
 
 /*
 #pragma mark - Navigation
@@ -58,7 +59,7 @@
     
     NSString *idTextField = self.idTextField.text;
     self.currentCustomer= [self.customerDictionary objectForKey:idTextField];
-    // key給objectForKey會得到一個 object , 一個 Person's object，customerDictionary 先lazy init後，再指向他，之後再讓currentCustomer給指
+    // key給objectForKey會得到一個 object , 一個 Person's object，customerDictionary 先lazy init後 ?，再指向他，之後再讓currentCustomer給指
     
     
     
