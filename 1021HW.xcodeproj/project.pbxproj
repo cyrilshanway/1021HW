@@ -15,6 +15,11 @@
 		299AEAD919F653FA008E67BE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 299AEAD819F653FA008E67BE /* Images.xcassets */; };
 		299AEADC19F653FA008E67BE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 299AEADA19F653FA008E67BE /* LaunchScreen.xib */; };
 		299AEAE819F653FA008E67BE /* _021HWTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 299AEAE719F653FA008E67BE /* _021HWTests.m */; };
+		299AEAF319F65567008E67BE /* DepositViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 299AEAF219F65567008E67BE /* DepositViewController.m */; };
+		299AEAF619F65578008E67BE /* WithdrawViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 299AEAF519F65578008E67BE /* WithdrawViewController.m */; };
+		299AEAFA19F65629008E67BE /* XYZPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 299AEAF919F65629008E67BE /* XYZPerson.m */; };
+		299AEAFD19F6582C008E67BE /* Customer.m in Sources */ = {isa = PBXBuildFile; fileRef = 299AEAFC19F6582C008E67BE /* Customer.m */; };
+		299AEB0019F6681E008E67BE /* QueryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 299AEAFF19F6681E008E67BE /* QueryViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +47,16 @@
 		299AEAE119F653FA008E67BE /* 1021HWTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = 1021HWTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		299AEAE619F653FA008E67BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		299AEAE719F653FA008E67BE /* _021HWTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _021HWTests.m; sourceTree = "<group>"; };
+		299AEAF119F65567008E67BE /* DepositViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepositViewController.h; sourceTree = "<group>"; };
+		299AEAF219F65567008E67BE /* DepositViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepositViewController.m; sourceTree = "<group>"; };
+		299AEAF419F65578008E67BE /* WithdrawViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WithdrawViewController.h; sourceTree = "<group>"; };
+		299AEAF519F65578008E67BE /* WithdrawViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WithdrawViewController.m; sourceTree = "<group>"; };
+		299AEAF819F65629008E67BE /* XYZPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZPerson.h; sourceTree = "<group>"; };
+		299AEAF919F65629008E67BE /* XYZPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZPerson.m; sourceTree = "<group>"; };
+		299AEAFB19F6582C008E67BE /* Customer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Customer.h; sourceTree = "<group>"; };
+		299AEAFC19F6582C008E67BE /* Customer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Customer.m; sourceTree = "<group>"; };
+		299AEAFE19F6681E008E67BE /* QueryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueryViewController.h; sourceTree = "<group>"; };
+		299AEAFF19F6681E008E67BE /* QueryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueryViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +80,7 @@
 		299AEABC19F653FA008E67BE = {
 			isa = PBXGroup;
 			children = (
+				299AEAF719F655EE008E67BE /* Model */,
 				299AEAC719F653FA008E67BE /* 1021HW */,
 				299AEAE419F653FA008E67BE /* 1021HWTests */,
 				299AEAC619F653FA008E67BE /* Products */,
@@ -83,10 +99,14 @@
 		299AEAC719F653FA008E67BE /* 1021HW */ = {
 			isa = PBXGroup;
 			children = (
-				299AEACC19F653FA008E67BE /* AppDelegate.h */,
-				299AEACD19F653FA008E67BE /* AppDelegate.m */,
 				299AEAD219F653FA008E67BE /* ViewController.h */,
 				299AEAD319F653FA008E67BE /* ViewController.m */,
+				299AEAF119F65567008E67BE /* DepositViewController.h */,
+				299AEAF219F65567008E67BE /* DepositViewController.m */,
+				299AEAF419F65578008E67BE /* WithdrawViewController.h */,
+				299AEAF519F65578008E67BE /* WithdrawViewController.m */,
+				299AEAFE19F6681E008E67BE /* QueryViewController.h */,
+				299AEAFF19F6681E008E67BE /* QueryViewController.m */,
 				299AEAD519F653FA008E67BE /* Main.storyboard */,
 				299AEAD819F653FA008E67BE /* Images.xcassets */,
 				299AEADA19F653FA008E67BE /* LaunchScreen.xib */,
@@ -99,6 +119,8 @@
 		299AEAC819F653FA008E67BE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				299AEACC19F653FA008E67BE /* AppDelegate.h */,
+				299AEACD19F653FA008E67BE /* AppDelegate.m */,
 				299AEAC919F653FA008E67BE /* Info.plist */,
 				299AEACA19F653FA008E67BE /* main.m */,
 			);
@@ -120,6 +142,18 @@
 				299AEAE619F653FA008E67BE /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		299AEAF719F655EE008E67BE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				299AEAF819F65629008E67BE /* XYZPerson.h */,
+				299AEAF919F65629008E67BE /* XYZPerson.m */,
+				299AEAFB19F6582C008E67BE /* Customer.h */,
+				299AEAFC19F6582C008E67BE /* Customer.m */,
+			);
+			name = Model;
+			path = 1021HW/Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,10 +256,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				299AEAFA19F65629008E67BE /* XYZPerson.m in Sources */,
+				299AEAF319F65567008E67BE /* DepositViewController.m in Sources */,
+				299AEB0019F6681E008E67BE /* QueryViewController.m in Sources */,
 				299AEAD119F653FA008E67BE /* _021HW.xcdatamodeld in Sources */,
+				299AEAF619F65578008E67BE /* WithdrawViewController.m in Sources */,
 				299AEACE19F653FA008E67BE /* AppDelegate.m in Sources */,
 				299AEAD419F653FA008E67BE /* ViewController.m in Sources */,
 				299AEACB19F653FA008E67BE /* main.m in Sources */,
+				299AEAFD19F6582C008E67BE /* Customer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

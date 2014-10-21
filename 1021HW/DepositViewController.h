@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  DepositViewController.h
 //  1021HW
 //
 //  Created by Joseph on 2014/10/21.
@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Customer.h"
 
-@interface ViewController : UIViewController
+@interface DepositViewController : UIViewController
 
-@property (strong, nonatomic) NSMutableDictionary *customerDictionary;
 
+
+@property Customer *currentCustomer ;
 
 @end
-

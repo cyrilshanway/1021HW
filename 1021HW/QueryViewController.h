@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  QueryViewController.h
 //  1021HW
 //
 //  Created by Joseph on 2014/10/21.
@@ -8,10 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface QueryViewController : UIViewController
+
 
 @property (strong, nonatomic) NSMutableDictionary *customerDictionary;
 
-
 @end
-
