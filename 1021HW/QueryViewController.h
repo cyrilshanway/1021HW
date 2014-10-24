@@ -8,14 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "Customer.h"
+
 @interface QueryViewController : UIViewController
 
 
 @property (strong, nonatomic) NSMutableDictionary *customerDictionary;
 
-
-
-
 @property Customer *currentCustomer ;
+
 
 @end

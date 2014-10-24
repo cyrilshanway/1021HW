@@ -8,12 +8,13 @@
 
 #import "QueryViewController.h"
 //#import "ViewController.h"
+#import "Customer.h"
 
 @interface QueryViewController ()
 
-
 @property (weak, nonatomic) IBOutlet UITextField *idTextField;
 
+@property (strong,nonatomic) NSMutableArray *customerArray;
 
 
 @end
@@ -50,32 +51,130 @@
 }
 */
 
+- (NSMutableArray *) customerArray {
+    
+    //    if(!_customerArray)
+    //        _customerArray = [[NSMutableArray alloc] init];
+    
+#pragma mark - 10/22新教寫法
+    if (!_customerArray) {
+        _customerArray = [@[]mutableCopy];
+    }
+    
+    return _customerArray;
+}
+
 
 - (IBAction)queryIDPressed:(id)sender {
     
-    
-    
-    
-    
-    NSString *idTextField = self.idTextField.text;
-    self.currentCustomer= [self.customerDictionary objectForKey:idTextField];
+    //NSString *idTextField = self.idTextField.text;
+   // self.currentCustomer  = self.customerDictionary[idTextField];
     // key給objectForKey會得到一個 object , 一個 Person's object，customerDictionary 先lazy init後 ?，再指向他，之後再讓currentCustomer給指
     
-    
-    
+    /*
     NSString *name = [NSString stringWithFormat:@"%@ %@",self.currentCustomer.firstName, self.currentCustomer.lastName];
     
-    NSString *balance = [NSString stringWithFormat:@"Balance is %i", self.currentCustomer.balance];
+    NSString *balance = [NSString stringWithFormat:@"Balance is %i", [self.currentCustomer.balance intValue]];
     
+    UIAlertController *alert = [UIAlertController
+                                alertControllerWithTitle:name
+                                message:balance //[NSString stringWithFormat:@"%@",IDName]
+                                preferredStyle:(UIAlertControllerStyleAlert)];
     
+    // 想像成button
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK"
+                                                 style:UIAlertActionStyleDefault
+                                               handler:^(UIAlertAction *action){
+                                                   [alert dismissViewControllerAnimated:YES
+                                                                             completion:nil];
+                                               }];
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:name message:balance delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil,nil];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"cancel"
+                                                     style:UIAlertActionStyleDefault
+                                                   handler:^(UIAlertAction *action){
+                                                       [alert dismissViewControllerAnimated:YES
+                                                                                 completion:nil];
+                                                   }];
     
-    [alert show];
+    [alert addAction:ok];
+    [alert addAction:cancel];
     
+    // 用ViewController,不用segue就要用這個方法 completion:顯示完要做什麼
+    [self presentViewController:alert animated:YES completion:nil];
+    */
     
-    
-    
+#pragma mark --10/23 parse-query-test
+    PFQuery *query = [PFQuery queryWithClassName:@"Customer"];
+    [query whereKey:@"IDName" equalTo:self.idTextField.text];//@"IDNumber" /self.idTextField.text
+    //[query whereKey:@"IDNumber" equalTo:self.idTextField.text];
+    //[query findObjectsInBackgroundWithBlock:^(NSArray *objects , NSError *error) {
+    //
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject *objects , NSError *error) {
+        if (objects) {
+            // The find succeeded.
+            NSLog(@"successful");
+            NSLog(@"%@", objects);
+            // Do something with the found objects
+            NSString *name = [NSString stringWithFormat:@"%@ %@",objects[@"firstName"],objects[@"lastName"] ];
+            
+            NSString *balance = [NSString stringWithFormat:@"Balance is %@", objects[@"balance"]];
+            
+            UIAlertController *alert = [UIAlertController
+                                        alertControllerWithTitle:name
+                                        message:balance //[NSString stringWithFormat:@"%@",IDName]
+                                        preferredStyle:(UIAlertControllerStyleAlert)];
+            
+            // 想像成button
+            UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK"
+                                                         style:UIAlertActionStyleDefault
+                                                       handler:^(UIAlertAction *action){
+                                                           [alert dismissViewControllerAnimated:YES
+                                                                                     completion:nil
+                                                                                     //如要按完ok再顯示code寫在這裡
+                                                            ];
+                                                           
+                                                       }];
+            
+            UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"cancel"
+                                                             style:UIAlertActionStyleDefault
+                                                           handler:^(UIAlertAction *action){
+                                                               [alert dismissViewControllerAnimated:YES
+                                                                                         completion:nil];
+                                                           }];
+            
+            [alert addAction:ok];
+            [alert addAction:cancel];
+            
+            [self presentViewController:alert animated:YES completion:nil];
+            
+        } else {
+            
+            UIAlertController *alert = [UIAlertController
+                                        alertControllerWithTitle:@"OOPS"
+                                        message:@"nothing to find"
+                                        preferredStyle:(UIAlertControllerStyleAlert)];
+            
+            // 想像成button
+            UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK"
+                                                         style:UIAlertActionStyleDefault
+                                                       handler:^(UIAlertAction *action){
+                                                           [alert dismissViewControllerAnimated:YES
+                                                                                     completion:nil];
+                                                       }];
+            
+            UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"cancel"
+                                                             style:UIAlertActionStyleDefault
+                                                           handler:^(UIAlertAction *action){
+                                                               [alert dismissViewControllerAnimated:YES
+                                                                                         completion:nil];
+                                                           }];
+            
+            [alert addAction:ok];
+            [alert addAction:cancel];
+            
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+    }];
     
 }
 

@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <Parse/Parse.h>
 
 @interface AppDelegate ()
 
@@ -14,12 +15,21 @@
 
 @implementation AppDelegate
 
-
+// 整個程式第一個跑的
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [Parse setApplicationId:@"BWSy3Rl4WBbnnFAxyJhIBSp7IsMwJHaGAQdDNjyZ"
+                  clientKey:@"430f36STDoZv1dxcSRgUPrSaWieYveAQHcbxekBu"];
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
+    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
+    testObject[@"foo"] = @"bar";
+    [testObject saveInBackground];
+    
     return YES;
 }
-
+// 跑到背景跑時，會用到這程式
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.

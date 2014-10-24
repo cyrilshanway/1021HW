@@ -8,44 +8,43 @@
 
 #import "Customer.h"
 
-
 @interface Customer ()
-
-
 
 @end
 
-
-
-
-
-
 @implementation Customer
 
-
--(void)deposit:(int)amount{
-    self.balance += amount ;
-    
-    
+#pragma mark - 10/23
+- (NSNumber *)balance{
+    return self.personObject[@"balance"];
 }
 
+-(void)setBalance:(NSNumber *)balance{
+    self.personObject[@"balance"] = balance;
+    [self.personObject saveInBackground];
+}
 
+-(void)deposit:(int)amount{
+    
+    int balance = [self.balance intValue];
+    balance += amount ;
+    
+    self.balance = [NSNumber numberWithInt:balance];
+}
 
 -(void)withdraw:(int)amount{
     
+    int balance = [self.balance intValue];
+    balance -= amount;
     
-    self.balance -= amount ;
+    self.balance = [NSNumber numberWithInt:balance] ;
 }
-
-
 
 -(void)showBalance{
     
-    NSLog(@"Balance: %i" ,self.balance);
+    NSLog(@"Balance: %i" ,[self.balance intValue]);
     
 }
-
-
 
 @end
 

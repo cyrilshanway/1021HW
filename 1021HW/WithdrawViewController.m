@@ -49,14 +49,37 @@
     
     [self.currentCustomer showBalance];
     
-    NSString *amountString = [NSString stringWithFormat:@"Withdraw : %@", self.withdrawAmountTextField.text];
-    NSString *balanceString = [NSString stringWithFormat:@"Your Balance Amount : %i", self.currentCustomer.balance];
+    NSString *amountString  = [NSString stringWithFormat:@"Withdraw : %@", self.withdrawAmountTextField.text];
+    NSString *balanceString = [NSString stringWithFormat:@"Your Balance Amount : %i", [self.currentCustomer.balance intValue]];
     
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:amountString message:balanceString delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil,nil];
-    [alert show];
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:amountString message:balanceString delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil,nil];
+//    [alert show];
+    
+    UIAlertController *alert = [UIAlertController
+                                alertControllerWithTitle:amountString
+                                message:balanceString
+                                preferredStyle:(UIAlertControllerStyleAlert)];
+    
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK"
+                                                 style:UIAlertActionStyleDefault
+                                               handler:^(UIAlertAction *action){
+                                                   [alert dismissViewControllerAnimated:YES
+                                                                             completion:nil];
+                                               }];
+    
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"cancel"
+                                                     style:UIAlertActionStyleDefault
+                                                   handler:^(UIAlertAction *action){
+                                                       [alert dismissViewControllerAnimated:YES
+                                                                                 completion:nil];
+                                                   }];
+    
+    [alert addAction:ok];
+    [alert addAction:cancel];
     
     
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 
