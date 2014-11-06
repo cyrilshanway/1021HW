@@ -22,7 +22,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *IDTextFild;
 
-@property (strong, nonatomic)NSMutableArray *idNumArray;
+@property (strong, nonatomic )NSMutableArray *idNumArray;
 
 @property (strong, nonatomic) NSMutableArray *customerArray;
 @property (strong, nonatomic) NSMutableDictionary *customerDictionary;
@@ -55,13 +55,13 @@
 - (IBAction)AccountCreate:(id)sender {
     
     NSString *firstName = self.FisrtNameTextFild.text ;
-    NSString *lastName = self.LastNameTextFild.text ;
-    NSString *IDName = self.IDTextFild.text ;
-    //把IBOutlet 拉的 textfield 欄位的字，給NSString
+    NSString *lastName  = self.LastNameTextFild.text ;
+    NSString *IDName    = self.IDTextFild.text ;
+    //把IBOutlet 拉的 textfield 欄位輸入的值給NSString宣告的新NSString
     
     
     //10/22
-    // 抓出發現已有值
+    // 抓出已經有值的帳號
     if (self.customerDictionary[IDName]){
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Account exits"
                                                         message:nil
@@ -241,6 +241,7 @@
     NSAssert(success, @"ArchiveRootObject failed");
 }
 
+// 每人都加1000
 - (void)increaseBalance{
     int bonus = 1000;
     
@@ -255,5 +256,7 @@
     }
 }
 
-
+-(IBAction)backToMainViewController:(UIStoryboardSegue*) segue {
+    
+}
 @end

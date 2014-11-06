@@ -21,6 +21,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    
     // 應該放在viewWillAppear
     PFUser *currentUser = [PFUser currentUser];
     if (currentUser) {
@@ -29,6 +30,7 @@
     } else {
         // show the signup or login screen
     }
+     
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,7 +40,8 @@
 #pragma mark - 10/24
 - (IBAction)loginBurronPressed:(id)sender {
     
-    [PFUser logInWithUsernameInBackground:self.userNameTextField.text password:self.passwordTextField.text
+    [PFUser logInWithUsernameInBackground:self.userNameTextField.text
+                                 password:self.passwordTextField.text
                                     block:^(PFUser *user, NSError *error) {
                                         if (user) {
                                             // Do stuff after successful login.
@@ -49,11 +52,40 @@
                                         } else {
                                             // The login failed. Check error to see why.
                                             NSLog(@"failed");
+                                            
+                                            UIAlertController *alert = [UIAlertController
+                                                                        alertControllerWithTitle:@"OOPs"
+                                                                        message:@"查無此人"
+                                                                        preferredStyle:(UIAlertControllerStyleAlert)];
+                                            
+                                            UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK"
+                                                                                         style:UIAlertActionStyleDefault
+                                                                                       handler:^(UIAlertAction *action){
+                                                                                           [alert dismissViewControllerAnimated:YES
+                                                                                                                     completion:nil];
+                                                                                       }];
+                                            
+                                            UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"cancel"
+                                                                                             style:UIAlertActionStyleDefault
+                                                                                           handler:^(UIAlertAction *action){
+                                                                                               [alert dismissViewControllerAnimated:YES
+                                                                                                                         completion:nil];
+                                                                                           }];
+                                            
+                                            [alert addAction:ok];
+                                            [alert addAction:cancel];
+                                            
+                                            
+                                            [self presentViewController:alert animated:YES completion:nil];
+
+                                            
                                         }
                                     }];
     
 }
 
+
+/*
 - (IBAction)registerBtnPressed:(id)sender {
     //要用"點"
     PFUser *user = [PFUser user];
@@ -77,7 +109,7 @@
     }];
     
 }
-
+*/
 /*
 #pragma mark - Navigation
 
@@ -87,5 +119,7 @@
     // Pass the selected object to the new view controller.
 }
 */
-
+-(IBAction)backToMainViewController:(UIStoryboardSegue*) segue {
+    
+}
 @end
