@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <Parse/Parse.h>NSString
+#import <Parse/Parse.h>
 
 @interface XYZPerson : NSObject
 
